@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Az eggyik kedvenc játékom (2022)</title>
+
+    <style>
+        table, th, td {
+            border:1px solid black;
+          background: linear-gradient(rgb(216, 85, 85), rgb(223, 166, 81));
+        }
+        img {
+                border: 6px solid rgb(67, 74, 87);
+        }
+        body {
+            background-color: black;
+        }
+        </style>
+
+    <script> 
+
+            function submit() {
+            eredmenyek = document.getElementById('eredmenyek')
+            nev        = document.getElementById('inp_nev').value
+            email      = document.getElementById('inp_email').value
+            cim        = document.getElementById('inp_cim').value
+            szul_ev    = document.getElementById('inp_szul_datum').value
+            
+            if (nev == '') {
+                alert("Nem adtál meg nevet!")
+            }
+            else if (email == '') {
+                alert("Nem adtál meg Email címet!")
+            }
+            else if (cim == '') {
+                alert("Nem adtál meg címet!")
+            }
+            else if (szul_ev == '') {
+                alert("Nem adtál meg születési évet!")
+            }
+            else {
+                mail_check_l = email.split('@')
+                if (mail_check_l.length != 2) {
+                    alert("Rossz e-mail cím formátum!")
+                    return
+                }
+                else {
+                    domain = mail_check_l[1].split('.')
+                    if (domain.length < 2) {
+                        alert("Rossz e-mail cím formátum!")
+                        return
+                    }   
+                }               
+                eredmenyek.innerHTML =  "Név: " + nev + "<br>"
+                eredmenyek.innerHTML += `Email: ${email}<br>`
+                eredmenyek.innerHTML += `Cím:   ${cim}<br>`
+                eredmenyek.innerHTML += `Születési év: ${szul_ev}<br>`
+            }  
+        }  
+
+        function hide_click(id, button) {
+            console.log(id, button)
+            var div = document.getElementById(id)
+
+            div.hidden = !div.hidden
+            if (button != undefined) {
+                if (div.hidden) {
+                    button.innerText = "Show"
+                }
+                else {
+                    button.innerText = "Hide"
+                }
+            }
+        }
+
+        function resize_pic(num) {
+            var pic = document.getElementById('gpic')
+
+            switch (num) {
+                case 0: pic.style.width = '30%';  break;
+                case 1: pic.style.width= '60%';  break;
+                case 2: pic.style.width = '100%';  break;
+            }
+        }
+
+        function load_list() {
+            var sentences = document.getElementsByClassName('lista')
+            var list              = document.getElementById('list')
+
+            if (sentences.length == 0) {
+                list.innerHTML = "A betöltés eredménye: üres."
+            }
+            else {
+                let inHtml = ""
+
+                for (let i = 0; i < sentences.length; i++) {
+                    inHtml += "<div>" + (i + 1) + ": " + sentences[i].innerText + "</div>"
+                }
+
+                list.innerHTML = inHtml
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <table style="width:90%" align="center">
+        <h1 align="center"><u>A kedvenc játékom: Apex Legends</u></h1>
+<td>
+    <button onclick="hide_click('pic', this)">Hide</button>
+    <button onclick="resize_pic(0)">Kicsi</button>
+             <button onclick="resize_pic(1)">Közepes</button>
+             <button onclick="resize_pic(2)">Nagy</button>
+</td>
+        <th colspan="4">
+            <div id='pic'>
+            <img src="https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg" id="gpic" align="center">
+            </div>
+        </th>
+        <tr>
+            <th style="width:20%">Leírás</th>
+            <th style="width:20%">Gépigény</th>
+            <th style="width:20%">Kilistázás</th>
+            <th style="width:20%">Textbox</th>
+            </tr>
+        <tr>
+            <td>
+                <button onclick="hide_click('desc', this)">Hide</button>
+                <div id="desc">
+                    <span class="lista">
+                        Az Apex Legends egy battle royale játék, amely a lövöldözős játékok karakterisztikáit viseli magán, amely a Titanfall 2 után harminc évvel játszódik.
+                        Az Apex Legends annyiban különbözik a többi battle royale című játéktól, hogy a karakterei (Legends) külön, önálló tulajdonságokkal és képességekkel rendelkeznek,
+                        mint például a Védekezés, a Támadás, a Támogatás és a Felderítés. A játékosok három fős csapatokat alkotnak, melyek kezdetén minden játékos ki kell,
+                        hogy válassza a saját karakterét (Legend) és minden mérkőzés 20 csapattal, azaz 60 játékos részvételével kezdődik.
+                    </span>
+                        Minden csapat felszerelés nélkül kezdi meg a meccset és a játék úgy nevezett ledobó hajóiról indul, ahonnan a játékosok az egyikük által,
+                        az úgy nevezett jump master, segítségével jutnak el a sárga jelzéssel kijelölt játéktérre.
+                        A játékosok a földet érést követően a leszállási hely környékén található házakból szerzik be a különböző fegyvereket, páncélzatot és egyéb kiegészítő felszereléseket,
+                        miközben a mérkőzés kezdetétől fogva belefuthatnak az ellenséges csapatok tagjaival folytatott küzdelembe.
+                        A játék egyenes kieséses rendszerű, amelynek során a csapat akkor esik ki egy meccsből, ha mindhárom tagját megölték. Amikor egy csapatból van egy túlélő,
+                        annak korlátozott ideig lehetősége van a halott társát feléleszteni. A feltámasztási idő lejártát követően a kiesett játékos már csak nézőként vehet részt a játékban,
+                        esetleg figyelmeztetheti a társait a közelgő veszélyekre.
+                        A játék több körből áll, melyek fokozatosan leszűkülnek és azok, akik a körön kívül ragadnak, azok kiesnek a játékból.
+                        (veletlenul se lett kimasolva egy oldalrol)
+            </td> 
+            <td> 
+                <button onclick="hide_click('specs', this)">Hide</button>
+                <div id="specs"; text-align: center>
+                <span class="lista">
+                <u>Minimum Követelmények: </u>  <br> 
+                <br>               
+               <u>CPU: </u>
+               Intel Core i3 6300 or Equivalent / AMD FX 4350 or Equivalent<br>
+               <br>
+               <u>RAM: </u>
+               6 GB of RAM<br> 
+               <br>
+               <u>Videoó Kártya: </u>
+               Nvidia GeForce GT 640<br>
+               <br>
+               <u>OS: </u>
+               Windows 7<br>
+               <br>
+               <u>Tárhely: </u>
+               56 Gigabyte<br>
+                </span>
+                <br>
+                </div> 
+
+            </td>
+            <td>
+
+                <div id="rows">
+                    <button onclick="load_list()"> Betöltés </button>
+                    <div id="list" style="border: 1px solid gray; max-height: 160px;">
+                        A lista üres.
+                    </div>
+                    <br>
+                </div>
+
+            </td>
+            <td>
+            <div>
+            <h2><button onclick="hide_click('szoveg', this)"; text-align: center>Hide</button> Textbox:</h2>
+            <div id="szoveg">
+
+                Név:<input type="text" id="inp_nev" /><br>
+
+                Email:<input type="text" id="inp_email"/><br>
+
+                Cím:<input type="text" id="inp_cim"/><br>
+
+                Születési év:<input type="date" id="inp_szul_datum"/><br>
+
+                <button onclick="submit()">Igazolás</button> 
+            </div>
+            <br>
+            </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
